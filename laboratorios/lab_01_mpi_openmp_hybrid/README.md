@@ -37,3 +37,39 @@ Es el comunicador principal de MPI que contiene todos los procesos activos.
 
 
 _________________________________________________________________________________________
+
+---
+
+# Ejercicio 2 — OpenMP dentro de MPI
+
+## Descripción
+
+Dentro de cada proceso MPI se lanza una región paralela OpenMP con 4 hilos.
+
+Cada hilo imprime su identificador junto con el rank del proceso MPI que lo contiene.
+
+---
+
+## Compilación
+
+```bash
+gcc mpi_02_hibrido.c -o mpi_02_hibrido.exe -fopenmp -I"C:\MPI\msmpisdk.10.1.12498.52\Include" -L"C:\MPI\msmpisdk.10.1.12498.52\Lib\x64" -lmsmpi
+Ejecucion 
+mpiexec -n 2 mpi_02_hibrido.exe
+mpiexec -n 4 mpi_02_hibrido.exe
+
+
+1. Con 2 procesos MPI y 4 hilos OMP, ¿cuántas unidades de cómputo hay?
+
+Existen 8 unidades de cómputo porque cada proceso MPI crea 4 hilos OpenMP.
+
+2. ¿Diferencia entre -n 4 y -n 1?
+
+Con -n 4 existen varios procesos independientes.
+
+Con -n 1 existe un único proceso usando múltiples hilos compartiendo memoria.
+
+3. ¿Por qué MPI_Init_thread en lugar de MPI_Init?
+
+Porque el programa utiliza MPI junto con OpenMP y necesita soporte para múltiples hilos.
+_________________________________________________________________________________________
