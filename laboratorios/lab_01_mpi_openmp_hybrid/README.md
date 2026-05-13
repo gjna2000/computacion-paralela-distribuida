@@ -107,3 +107,54 @@ Porque evita conflictos entre hilos al realizar sumas simultáneas.
 
 Solo se imprimiría la suma parcial del proceso 0 y no la suma total global.
 _________________________________________________________________________________________
+
+---
+
+# Ejercicio 4 — Speedup Híbrido
+
+## Descripción
+
+Se añade medición de tiempos usando `MPI_Wtime()` para analizar el rendimiento del modelo híbrido MPI + OpenMP.
+
+---
+
+## Compilación
+
+```bash
+gcc mpi_04_speedup.c -o mpi_04.exe -fopenmp -I"C:\MPI\msmpisdk.10.1.12498.52\Include" -L"C:\MPI\msmpisdk.10.1.12498.52\Lib\x64" -lmsmpi
+
+mpiexec -n 1 mpi_04.exe
+mpiexec -n 2 mpi_04.exe
+mpiexec -n 4 mpi_04.exe
+
+| Configuración | Procesos MPI | Tiempo |
+| ------------- | ------------ | ------ |
+| Secuencial    | 1            | Medido |
+| MPI           | 2            | Medido |
+| MPI           | 4            | Medido |
+
+
+1. ¿Coincide con la Ley de Amdahl?
+
+Sí. El speedup mejora hasta cierto límite debido a la parte secuencial del programa.
+
+2. ¿Por qué más procesos/hilos no siempre aumentan el speedup?
+
+Porque existe overhead de sincronización y comunicación.
+
+3. ¿Qué overhead introduce MPI?
+
+MPI introduce costos de comunicación y transferencia de datos entre procesos.
+
+
+# Conclusiones
+
+1. MPI permite distribuir trabajo entre múltiples procesos.
+
+2. OpenMP facilita el paralelismo mediante hilos compartiendo memoria.
+
+3. El modelo híbrido MPI + OpenMP mejora el rendimiento en cálculos grandes.
+
+4. La sincronización correcta evita errores en cálculos paralelos.
+
+5. El speedup no es infinito debido al overhead y partes secuenciales.
