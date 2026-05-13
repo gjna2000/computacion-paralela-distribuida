@@ -73,3 +73,37 @@ Con -n 1 existe un único proceso usando múltiples hilos compartiendo memoria.
 
 Porque el programa utiliza MPI junto con OpenMP y necesita soporte para múltiples hilos.
 _________________________________________________________________________________________
+
+---
+
+# Ejercicio 3 — Suma Híbrida de Vector
+
+## Descripción
+
+El proceso maestro inicializa un vector de un millón de elementos.
+
+MPI distribuye partes del vector entre los procesos y OpenMP realiza la suma paralela de cada bloque.
+
+Finalmente MPI combina las sumas parciales.
+
+---
+
+## Compilación
+
+```bash
+gcc mpi_03_suma_hibrida.c -o mpi_03.exe -fopenmp -I"C:\MPI\msmpisdk.10.1.12498.52\Include" -L"C:\MPI\msmpisdk.10.1.12498.52\Lib\x64" -lmsmpi
+
+Ejecución
+mpiexec -n 4 mpi_03.exe
+1. ¿Qué hace exactamente MPI_Scatter?
+
+Divide y distribuye partes de un arreglo entre todos los procesos MPI.
+
+2. ¿Por qué reduction(+:suma_local) y no una variable compartida?
+
+Porque evita conflictos entre hilos al realizar sumas simultáneas.
+
+3. ¿Qué pasaría si olvidaras MPI_Reduce?
+
+Solo se imprimiría la suma parcial del proceso 0 y no la suma total global.
+_________________________________________________________________________________________
