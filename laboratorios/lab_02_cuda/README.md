@@ -142,7 +142,33 @@ cuando cada hilo accede solo a su propia posición sin conflictos de escritura.
 
 ---
 
+
+---
+
+## Ejercicio 6: Kernel 2D — Inicialización de Matriz
+
+### ¿Qué hace?
+Usa indexación 2D de hilos con `dim3` para inicializar una matriz 4×5.
+Implementa dos versiones: `mat[i][j] = índice lineal` y la TAREA `mat[i][j] = i + j`.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio6_kernel2d/ejercicio6_kernel2d.cu -o ejercicio6
+./ejercicio6
+```
+
+### Evidencia
+![Ejercicio 6](img/evidencia_ejercicio6.png)
+
+### Conclusión
+`dim3` permite lanzar kernels con geometría 2D o 3D, natural para matrices.
+Cada hilo calcula su fila con `blockIdx.y * blockDim.y + threadIdx.y`
+y su columna con `blockIdx.x * blockDim.x + threadIdx.x`.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
 
 
