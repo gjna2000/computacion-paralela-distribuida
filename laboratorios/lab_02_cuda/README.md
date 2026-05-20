@@ -38,4 +38,33 @@ libera los recursos. Este flujo es la base de todo programa CUDA.
 
 ---
 
+
+---
+
+## Ejercicio 2: Copia de Matriz 2D CPU ↔ GPU
+
+### ¿Qué hace?
+Transfiere una matriz de 3×4 floats entre CPU y GPU representada como arreglo 1D.
+Para acceder al elemento `[i][j]` se usa la fórmula `arreglo[i * COLS + j]`.
+Incluye verificación automática con `fabsf(a - b) < 1e-5f` para confirmar
+que cada elemento llegó intacto.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio2_matriz/ejercicio2_matriz.cu -o ejercicio2
+./ejercicio2
+```
+
+### Evidencia
+![Ejercicio 2](img/evidencia_ejercicio2.png)
+
+### Conclusión
+Las matrices multidimensionales en CUDA se manejan como arreglos 1D en memoria
+contigua. La fórmula `i * COLS + j` convierte índices 2D a posición lineal.
+La verificación con tolerancia `1e-5f` es la forma correcta de comparar floats,
+ya que la comparación directa con `==` puede fallar por errores de precisión.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
