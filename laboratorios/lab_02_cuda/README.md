@@ -192,7 +192,33 @@ coherencia. La shared memory hace cada acceso ~100× más rápido que global mem
 
 ---
 
+
+---
+
+## Ejercicio 8: Multiplicación Escalar y Medición de Tiempo
+
+### ¿Qué hace?
+Multiplica 10 millones de floats por un escalar en GPU. Mide el tiempo con
+CUDA Events y calcula el ancho de banda efectivo. Compara contra CPU con `clock()`.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio8_tiempo/ejercicio8_tiempo.cu -o ejercicio8
+./ejercicio8
+```
+
+### Evidencia
+![Ejercicio 8](img/evidencia_ejercicio8.png)
+
+### Conclusión
+CUDA Events mide tiempo directamente en la GPU con precisión de microsegundos,
+más preciso que `clock()` en la CPU. El speedup obtenido demuestra la ventaja
+del procesamiento masivamente paralelo para operaciones sobre vectores grandes.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
 
 
