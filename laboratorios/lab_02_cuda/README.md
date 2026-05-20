@@ -117,7 +117,33 @@ múltiplo del tamaño de bloque.
 
 ---
 
+
+---
+
+## Ejercicio 5: Cuadrado de Elementos (In-place)
+
+### ¿Qué hace?
+Eleva al cuadrado cada elemento de un arreglo directamente en GPU (in-place).
+El resultado se escribe sobre el mismo arreglo de entrada. Verifica que cada
+elemento resultante sea igual a `(i+1)²`.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio5_cuadrado/ejercicio5_cuadrado.cu -o ejercicio5
+./ejercicio5
+```
+
+### Evidencia
+![Ejercicio 5](img/evidencia_ejercicio5.png)
+
+### Conclusión
+Un kernel in-place ahorra memoria al no requerir buffer de salida. Es seguro
+cuando cada hilo accede solo a su propia posición sin conflictos de escritura.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
 
 
