@@ -167,7 +167,33 @@ y su columna con `blockIdx.x * blockDim.x + threadIdx.x`.
 
 ---
 
+
+---
+
+## Ejercicio 7: Reducción Paralela — Suma con Shared Memory
+
+### ¿Qué hace?
+Implementa la suma de 1024 enteros usando reducción en árbol con shared memory.
+Cada bloque produce una suma parcial; la CPU las combina al final.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio7_reduccion/ejercicio7_reduccion.cu -o ejercicio7
+./ejercicio7
+```
+
+### Evidencia
+![Ejercicio 7](img/evidencia_ejercicio7.png)
+
+### Conclusión
+La reducción paralela divide el trabajo logarítmicamente: N elementos se suman en
+log₂(N) pasos. `__syncthreads()` es obligatorio entre pasos para garantizar
+coherencia. La shared memory hace cada acceso ~100× más rápido que global memory.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
 
 
