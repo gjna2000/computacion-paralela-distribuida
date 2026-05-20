@@ -3,7 +3,7 @@
 **Universidad de Pamplona | Programación Paralela y Computación Distribuida**  
 **Docente:** Prf. Juan Alejandro Carrillo Jaimes  
 **Semestre:** 2026-I  
-**Integrantes:** Nombre 1 — Nombre 2
+**Integrantes:** Gonzalo javier niño amaris
 
 ---
 
