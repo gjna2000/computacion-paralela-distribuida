@@ -217,7 +217,33 @@ del procesamiento masivamente paralelo para operaciones sobre vectores grandes.
 
 ---
 
-<!-- Los siguientes ejercicios se irán agregando aquí -->
+
+---
+
+## Ejercicio 9: Producto Punto de Vectores
+
+### ¿Qué hace?
+Calcula el producto punto de dos vectores de 4096 floats combinando multiplicación
+elemento a elemento con reducción paralela por bloque. Incluye dos pruebas:
+vectores de unos (resultado = N) y vectores aleatorios con verificación contra CPU.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio9_producto_punto/ejercicio9_producto_punto.cu -o ejercicio9 -lm
+./ejercicio9
+```
+
+### Evidencia
+![Ejercicio 9](img/evidencia_ejercicio9.png)
+
+### Conclusión
+El producto punto combina dos patrones fundamentales: map (multiplicación) y reduce
+(suma). La pequeña diferencia entre GPU y CPU en vectores aleatorios se debe al
+orden de las operaciones en punto flotante, no a errores reales. El error relativo
+menor al 0.01% confirma la corrección del resultado.
+
+---
+
 
 
 
