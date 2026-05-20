@@ -92,6 +92,32 @@ del hardware disponible.
 
 ---
 
+
+---
+
+## Ejercicio 4: Suma de Vectores Paralela
+
+### ¿Qué hace?
+Suma dos vectores de 1,000,000 floats en paralelo. Cada hilo GPU procesa un par
+de elementos. Incluye verificación completa de todos los elementos del resultado.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio4_suma_vectores/ejercicio4_suma_vectores.cu -o ejercicio4
+./ejercicio4
+```
+
+### Evidencia
+![Ejercicio 4](img/evidencia_ejercicio4.png)
+
+### Conclusión
+El patrón `idx = blockIdx.x * blockDim.x + threadIdx.x` asigna un dato único a cada
+hilo. El guard `if (idx < n)` protege contra accesos fuera de rango cuando N no es
+múltiplo del tamaño de bloque.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
 
