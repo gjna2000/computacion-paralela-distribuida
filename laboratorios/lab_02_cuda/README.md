@@ -66,5 +66,32 @@ ya que la comparación directa con `==` puede fallar por errores de precisión.
 
 ---
 
+
+---
+
+## Ejercicio 3: Información del Device — Conoce tu GPU
+
+### ¿Qué hace?
+Consulta e imprime todas las propiedades de la GPU usando `cudaGetDeviceProperties()`.
+Incluye la TAREA: calcula el total de hilos simultáneos con la fórmula
+`SM * maxThreadsPerMultiProcessor`.
+
+### Compilar y ejecutar
+```bash
+nvcc ejercicio3_device_info/ejercicio3_device_info.cu -o ejercicio3
+./ejercicio3
+```
+
+### Evidencia
+![Ejercicio 3](img/evidencia_ejercicio3.png)
+
+### Conclusión
+Conocer las propiedades de la GPU es esencial antes de optimizar. El total de hilos
+simultáneos = SM × maxThreadsPerMultiProcessor determina el paralelismo máximo real
+del hardware disponible.
+
+---
+
 <!-- Los siguientes ejercicios se irán agregando aquí -->
+
 
